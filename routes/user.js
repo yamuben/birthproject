@@ -1,22 +1,21 @@
-const express = require ('express');
+const express = require("express");
 const {
-    register, 
-    login , 
-    updateDetails,
-    updatePassword ,
-    deleteUser
-} = require('../controllers/user');
+  register,
+  login,
+  updateDetails,
+  updatePassword,
+  deleteUser,getAllUsers
+} = require("../controllers/user");
 
-const { protect } = require('../middleWare/auth');
+const { protect } = require("../middleWare/auth");
 
 const router = express.Router();
 
+router.post("/register", register);
+router.post("/login", login);
+router.get("/all", getAllUsers);
+router.put("/updateDetails/:id", updateDetails);
+router.put("/updatePassword/:id", updatePassword);
+router.delete("/deleteUser/:id", deleteUser);
 
-
-router.post('/register', register);
-router.post('/login', login);
-router.put('/updateDetails/:id',protect,updateDetails);
-router.put('/updatePassword/:id',updatePassword);
-router.delete('/deleteUser/:id',deleteUser);
-
-module.exports= router 
+module.exports = router;

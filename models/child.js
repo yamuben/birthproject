@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const ChildSchema = new mongoose.Schema({
-  name: {
+  names: {
     type: String,
     required: [true, "please add a name"],
     unique: true,
@@ -13,11 +13,16 @@ const ChildSchema = new mongoose.Schema({
     type: String,
     required: [true, "please add address"],
   },
+  gender:String,
   weight:String,
-  parents:Array,
+  father:String,
+  mother:String,
   doctor:String,
   registeredBy:String,
-  HospitalName:String,
+  HospitalName:{
+    type: String,
+    required: [true, "please add address"],
+  },
   bloodType:String,
   comments:String,
   acceptGi: {
@@ -35,4 +40,4 @@ const ChildSchema = new mongoose.Schema({
 }
 );
 
-module.exports = mongoose.model('Child', ChildSchema);
+module.exports = mongoose.model('baby', ChildSchema);
